@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class EmployeeDAOImpl implements EmployeeDAO{
     private final String user = "postgres";
-    private final String password = "Nosachsech1@";
+    private final String password = "5460646";
     private final String url = "jdbc:postgresql://localhost:5432/skypro";
 
     @Override

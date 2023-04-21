@@ -13,7 +13,7 @@ public class Application {
         try (final Connection connection =
                      DriverManager.getConnection(url, user, password);
              PreparedStatement statement =
-                     connection.prepareStatement("SELECT * FROM employee city JOIN employee ON employee.city_id = city.city_id WHERE employee.id = 2")) {
+                     connection.prepareStatement("SELECT * FROM employee city JOIN employee ON employee.city_id = city.city_id WHERE employee.id = 1")) {
 
 
             ResultSet resultSet = statement.executeQuery();
