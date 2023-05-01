@@ -1,12 +1,13 @@
 import java.util.List;
 public interface EmployeeDAO {
-    void createEmployee(Employee employee);
+    Integer addEmployee(Employee employee);
+
 
     Employee getEmployeeById(int id);
 
     List<Employee> getAllEmployee();
 
-    void updateEmployee(Employee employee);
+    void updateEmployee(Employee employee, int id);
 
-    void deleteEmployee(int id);
+    void deleteEmployee(Employee employee);
 }
