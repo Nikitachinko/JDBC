@@ -1,23 +1,21 @@
-
-import java.sql.*;
-import java.util.ArrayList;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import java.util.List;
 import java.sql.*;
-public class EmployeeDAOImpl implements EmployeeDAO{
+import java.util.ArrayList;
+import java.util.List;
+public class EmployeeDAOImpl implements EmployeeDAO {
     private final String user = "postgres";
     private final String password = "5460646";
     private final String url = "jdbc:postgresql://localhost:5432/skypro";
 
+
     @Override
     public Integer addEmployee(Employee employee) {
         Integer id;
-        try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
+        try(Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()){
             Transaction transaction = session.beginTransaction();
             id = (Integer) session.save(employee);
             transaction.commit();
@@ -27,20 +25,16 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
     @Override
     public Employee getEmployeeById(int id) {
-        try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
+        try(Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()){
             return session.get(Employee.class, id);
         }
-
     }
 
     @Override
     public List<Employee> getAllEmployee() {
-        List<Employee> employees = new ArrayList<>();
-
         try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
             return session.createQuery("FROM Employee").list();
         }
-
     }
 
     @Override
@@ -59,7 +53,6 @@ public class EmployeeDAOImpl implements EmployeeDAO{
             Transaction transaction = session.beginTransaction();
             session.delete(employee);
             transaction.commit();
-
         }
     }
 }
